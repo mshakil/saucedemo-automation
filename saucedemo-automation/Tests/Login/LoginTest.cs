@@ -13,11 +13,8 @@ namespace saucedemo_automation
             string userName = "standard_user";
             string password = "secret_sauce";
 
-            MainCalls.SeleniumExtension.GotoUrl(webUrl);
-            MainCalls.LoginFunctions.EnterUserName(userName);
-            MainCalls.LoginFunctions.EnterPassword(password);
-            MainCalls.LoginFunctions.ClickSubmitButton();
-
+            MainCalls.LoginFunctions.NavigateToSauceDemoWebsite(webUrl);
+            MainCalls.LoginFunctions.LoginToSauceDemoApplication(userName, password);
         }
     }
 }

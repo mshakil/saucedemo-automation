@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Firefox;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -13,28 +9,41 @@ namespace saucedemo_automation
     {
         public static void InitializeWebDriver()
         {
-            string browserType = "chrome";
+            string browserType = "firefox";
 
             if (browserType.Equals("chrome"))
             {
                 InitializeChromeDriver();
             }
+            else if (browserType.Equals("firefox"))
+            {
+                InitializeFirefoxDriver();
+            }
         }
 
         public static void CloseWebDriver()
         {
-            webDriver.Close();
-            webDriver.Quit();
+            WebDriver.Close();
+            WebDriver.Quit();
         }
 
         private static void InitializeChromeDriver()
         {
-            if (webDriver == null)
+            if (WebDriver == null)
             {
-                //  USING WEB DRIVER MANAGER.
                 new DriverManager().SetUpDriver(new ChromeConfig());
-                webDriver = new ChromeDriver();
-                webDriver.Manage().Window.Maximize();
+                WebDriver = new ChromeDriver();
+                WebDriver.Manage().Window.Maximize();
+            }
+        }
+
+        private static void InitializeFirefoxDriver()
+        {
+            if (WebDriver == null)
+            {
+                new DriverManager().SetUpDriver(new FirefoxConfig());
+                WebDriver = new FirefoxDriver();
+                WebDriver.Manage().Window.Maximize();
             }
         }
     }

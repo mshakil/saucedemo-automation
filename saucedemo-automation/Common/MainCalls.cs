@@ -9,7 +9,7 @@ namespace saucedemo_automation
 {
     public class MainCalls
     {
-        public static IWebDriver webDriver { get; set; }
+        public static IWebDriver WebDriver { get; set; }
 
         #region Classes OBJECT REGION
 
@@ -20,7 +20,7 @@ namespace saucedemo_automation
             {
                 if (_seleniiumExtension == null)
                 {
-                    _seleniiumExtension = new SeleniumExtension(webDriver);
+                    _seleniiumExtension = new SeleniumExtension(WebDriver);
                 }
                 return _seleniiumExtension;
             }
@@ -34,7 +34,7 @@ namespace saucedemo_automation
             {
                 if (_loginFunctions == null)
                 {
-                    _loginFunctions = new LoginMethods(webDriver);
+                    _loginFunctions = new LoginMethods(WebDriver);
                 }
                 return _loginFunctions;
             }

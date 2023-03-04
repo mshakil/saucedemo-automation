@@ -11,19 +11,31 @@ namespace saucedemo_automation
     {
         public LoginMethods(IWebDriver driver) : base(driver) { }
 
-        public void EnterUserName(string userName)
+        private void EnterUserName(string userName)
         {
             MainCalls.SeleniumExtension.WebForElementAndSendKey(byUserName, userName);
         }
 
-        public void EnterPassword(string password)
+        private void EnterPassword(string password)
         {
             MainCalls.SeleniumExtension.WebForElementAndSendKey(byPassword, password);
         }
 
-        public void ClickSubmitButton()
+        private void ClickSubmitButton()
         {
             MainCalls.SeleniumExtension.WebForElementAndClick(loginButton);
+        }
+
+        public void LoginToSauceDemoApplication(string userName, string password)
+        {
+            EnterUserName(userName);
+            EnterPassword(password);
+            ClickSubmitButton();
+        }
+
+        public void NavigateToSauceDemoWebsite(string url)
+        {
+            MainCalls.SeleniumExtension.GotoUrl(url);
         }
     }
 }
